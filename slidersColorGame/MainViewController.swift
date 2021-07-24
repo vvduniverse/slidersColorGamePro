@@ -21,10 +21,7 @@ class MainViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(red: redColorVC,
-                                            green: greenColorVC,
-                                            blue: blueColorVC,
-                                            alpha: 1)
+        setColor(redColorVC, greenColorVC, blueColorVC)
     }
 }
 
