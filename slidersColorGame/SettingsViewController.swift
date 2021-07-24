@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SettingsViewController: UIViewController {
     
     @IBOutlet weak var viewColorRange: UIView!
     
@@ -18,10 +18,6 @@ class ViewController: UIViewController {
         
         viewColorRange.layer.cornerRadius = 15
         viewColorRange.backgroundColor = .darkGray
-//        viewColorRange.backgroundColor = UIColor(red: CGFloat(redColorSlider.value),
-//                                                 green: CGFloat(greenColorSlider.value),
-//                                                 blue: CGFloat(blueColorSlider.value),
-//                                                 alpha: 1)
         
         redColorSlider.minimumTrackTintColor = .red
         greenColorSlider.minimumTrackTintColor = .green
@@ -34,21 +30,21 @@ class ViewController: UIViewController {
     }
     
     @IBAction func redColorSet() {
-        let redColorValue = String(round(redColorSlider.value * 100) / 100)
+        let redColorValue = String(format: "%.2f", redColorSlider.value)
         
         redColorValueLabel.text = redColorValue
         backgroundColors()
     }
     
     @IBAction func greenColorSet() {
-        let greenColorValue = String(round(greenColorSlider.value * 100) / 100)
+        let greenColorValue = String(format: "%.2f", greenColorSlider.value)
         
         greenColorValueLabel.text = greenColorValue
         backgroundColors()
     }
     
     @IBAction func blueColorSet() {
-        let blueColorValue = String(round(blueColorSlider.value * 100) / 100)
+        let blueColorValue = String(format: "%.2f",blueColorSlider.value)
       
         blueColorValueLabel.text = blueColorValue
         backgroundColors()
