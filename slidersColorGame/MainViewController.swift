@@ -7,9 +7,9 @@ protocol SettingsViewControllerDelegate {
 
 class MainViewController: UIViewController{
     
-    var redColorVC: CGFloat = 1.0
-    var greenColorVC: CGFloat = 1.0
-    var blueColorVC: CGFloat = 1.0
+    private var redColorVC: CGFloat = 1.0
+    private var greenColorVC: CGFloat = 1.0
+    private var blueColorVC: CGFloat = 1.0
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let settingsViewController = segue.destination as? SettingsViewController else { return }
@@ -27,7 +27,7 @@ class MainViewController: UIViewController{
 
 extension MainViewController: SettingsViewControllerDelegate {
     func setColor(_ redColor: CGFloat, _ greenColor: CGFloat, _ blueColor: CGFloat) {
-        self.view.backgroundColor = UIColor(red: redColor,
+        view.backgroundColor = UIColor(red: redColor,
                                             green: greenColor,
                                             blue: blueColor,
                                             alpha: 1)
