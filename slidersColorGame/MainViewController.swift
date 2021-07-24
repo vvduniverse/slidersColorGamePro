@@ -1,6 +1,10 @@
 
 import UIKit
 
+protocol SettingsViewControllerDelegate {
+    func setColor(_ redColor: CGFloat, _ greenColor: CGFloat, _ blueColor: CGFloat)
+}
+
 class MainViewController: UIViewController{
     
     var redColorVC: CGFloat = 1.0
@@ -11,8 +15,8 @@ class MainViewController: UIViewController{
         guard let settingsViewController = segue.destination as? SettingsViewController else { return }
         settingsViewController.redColor = redColorVC
         settingsViewController.greenColor = greenColorVC
-        settingsViewController.bluecolor = blueColorVC
-//        welcomeVC.username = userLoginTF.text
+        settingsViewController.blueColor = blueColorVC
+        settingsViewController.delegate = self
     }
     
     override func viewDidLoad() {
@@ -21,9 +25,17 @@ class MainViewController: UIViewController{
                                             green: greenColorVC,
                                             blue: blueColorVC,
                                             alpha: 1)
-        
-//        self.view.backgroundColor = Colors.init(redColor: 1.0, greenColor: 1.0, blueColor: 1.0)
-
     }
+}
 
+extension MainViewController: SettingsViewControllerDelegate {
+    func setColor(_ redColor: CGFloat, _ greenColor: CGFloat, _ blueColor: CGFloat) {
+        self.view.backgroundColor = UIColor(red: redColor,
+                                            green: greenColor,
+                                            blue: blueColor,
+                                            alpha: 1)
+        redColorVC = redColor
+        greenColorVC = greenColor
+        blueColorVC = blueColor
+    }
 }

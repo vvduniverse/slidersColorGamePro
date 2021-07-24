@@ -5,7 +5,9 @@ class SettingsViewController: UIViewController {
         
     var redColor: CGFloat!
     var greenColor: CGFloat!
-    var bluecolor: CGFloat!
+    var blueColor: CGFloat!
+    
+    var delegate: SettingsViewControllerDelegate!
     
     @IBOutlet weak var viewColorRange: UIView!
     
@@ -16,8 +18,6 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var redColorSlider: UISlider!
     @IBOutlet weak var greenColorSlider: UISlider!
     @IBOutlet weak var blueColorSlider: UISlider!
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,13 +45,17 @@ class SettingsViewController: UIViewController {
         backgroundColors()
     }
     
+    @IBAction func doneButtonPressed(_ sender: UIButton) {
+        delegate.setColor(CGFloat(redColorSlider.value), CGFloat(greenColorSlider.value), CGFloat(blueColorSlider.value))
+        dismiss(animated: true)
+    }
+    
     private func initialSettings() {
         redColorSlider.value = Float(redColor)
         greenColorSlider.value = Float(greenColor)
-        blueColorSlider.value = Float(bluecolor)
+        blueColorSlider.value = Float(blueColor)
         
         viewColorRange.layer.cornerRadius = 15
-//        viewColorRange.backgroundColor = .darkGray
         
         redColorSlider.minimumTrackTintColor = .red
         greenColorSlider.minimumTrackTintColor = .green
@@ -64,7 +68,7 @@ class SettingsViewController: UIViewController {
         backgroundColors()
     }
     
-    func backgroundColors() {
+    private func backgroundColors() {
         viewColorRange.backgroundColor = UIColor(red: CGFloat(redColorSlider.value),
                                                  green: CGFloat(greenColorSlider.value),
                                                  blue: CGFloat(blueColorSlider.value),
