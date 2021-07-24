@@ -2,6 +2,10 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+        
+    var redColor: CGFloat!
+    var greenColor: CGFloat!
+    var bluecolor: CGFloat!
     
     @IBOutlet weak var viewColorRange: UIView!
     
@@ -13,20 +17,11 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var greenColorSlider: UISlider!
     @IBOutlet weak var blueColorSlider: UISlider!
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewColorRange.layer.cornerRadius = 15
-        viewColorRange.backgroundColor = .darkGray
-        
-        redColorSlider.minimumTrackTintColor = .red
-        greenColorSlider.minimumTrackTintColor = .green
-        blueColorSlider.minimumTrackTintColor = .blue
-        
-        redColorValueLabel.text = String(redColorSlider.value)
-        greenColorValueLabel.text = String(greenColorSlider.value)
-        blueColorValueLabel.text = String(blueColorSlider.value)
-        
+        initialSettings()
     }
     
     @IBAction func redColorSet() {
@@ -50,7 +45,26 @@ class SettingsViewController: UIViewController {
         backgroundColors()
     }
     
-    private func backgroundColors() {
+    private func initialSettings() {
+        redColorSlider.value = Float(redColor)
+        greenColorSlider.value = Float(greenColor)
+        blueColorSlider.value = Float(bluecolor)
+        
+        viewColorRange.layer.cornerRadius = 15
+//        viewColorRange.backgroundColor = .darkGray
+        
+        redColorSlider.minimumTrackTintColor = .red
+        greenColorSlider.minimumTrackTintColor = .green
+        blueColorSlider.minimumTrackTintColor = .blue
+        
+        redColorValueLabel.text = String(redColorSlider.value)
+        greenColorValueLabel.text = String(greenColorSlider.value)
+        blueColorValueLabel.text = String(blueColorSlider.value)
+        
+        backgroundColors()
+    }
+    
+    func backgroundColors() {
         viewColorRange.backgroundColor = UIColor(red: CGFloat(redColorSlider.value),
                                                  green: CGFloat(greenColorSlider.value),
                                                  blue: CGFloat(blueColorSlider.value),
