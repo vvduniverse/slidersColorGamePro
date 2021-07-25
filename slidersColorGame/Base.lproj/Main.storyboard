@@ -130,9 +130,8 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iiy-Ti-dqO">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iiy-Ti-dqO">
                                 <rect key="frame" x="160" y="622" width="70" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
@@ -147,8 +146,10 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="k2O-4u-z8T" secondAttribute="trailing" constant="16" id="FWD-0K-rpI"/>
                             <constraint firstItem="k2O-4u-z8T" firstAttribute="top" secondItem="5Kh-EB-Ium" secondAttribute="bottom" constant="45" id="HvX-CU-gdE"/>
                             <constraint firstItem="k2O-4u-z8T" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="bYn-bQ-pld"/>
+                            <constraint firstItem="iiy-Ti-dqO" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bdc-b0-sGQ"/>
                             <constraint firstItem="5Kh-EB-Ium" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="71" id="c5i-K0-zDT"/>
                             <constraint firstItem="5Kh-EB-Ium" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="sPV-lw-k1W"/>
+                            <constraint firstItem="iiy-Ti-dqO" firstAttribute="top" secondItem="k2O-4u-z8T" secondAttribute="bottom" constant="80" id="tC5-tC-JBs"/>
                         </constraints>
                     </view>
                     <connections>

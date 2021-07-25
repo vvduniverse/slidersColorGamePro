@@ -67,13 +67,12 @@ class SettingsViewController: UIViewController {
         
         backgroundColors()
     }
-    
+//    print test
     private func backgroundColors() {
         viewColorRange.backgroundColor = UIColor(red: CGFloat(redColorSlider.value),
                                                  green: CGFloat(greenColorSlider.value),
                                                  blue: CGFloat(blueColorSlider.value),
                                                  alpha: 1)
     }
-    
 }
 
