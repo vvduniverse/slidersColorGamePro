@@ -2,13 +2,7 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-        
-    var redColor: CGFloat!
-    var greenColor: CGFloat!
-    var blueColor: CGFloat!
-    
-    var delegate: SettingsViewControllerDelegate!
-    
+
     @IBOutlet weak var viewColorRange: UIView!
     
     @IBOutlet weak var redColorValueLabel: UILabel!
@@ -18,11 +12,18 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var redColorSlider: UISlider!
     @IBOutlet weak var greenColorSlider: UISlider!
     @IBOutlet weak var blueColorSlider: UISlider!
+
+    var currentColor: UIColor!
+    var delegate: SettingsViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setSliders()
+        viewColorRange.backgroundColor = currentColor
         initialSettings()
     }
+    
+//    -----------------------------
     
     @IBAction func redColorSet() {
         let redColorValue = String(format: "%.2f", redColorSlider.value)
@@ -46,14 +47,19 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: UIButton) {
-        delegate.setColor(CGFloat(redColorSlider.value), CGFloat(greenColorSlider.value), CGFloat(blueColorSlider.value))
+        delegate.setColor(viewColorRange.backgroundColor ?? .white)
         dismiss(animated: true)
     }
     
+    private func setSliders() {
+        let ciColor = CIColor(color: currentColor)
+        redColorSlider.value = Float(ciColor.red)
+        greenColorSlider.value = Float(ciColor.green)
+        blueColorSlider.value = Float(ciColor.blue)
+    }
+    
     private func initialSettings() {
-        redColorSlider.value = Float(redColor)
-        greenColorSlider.value = Float(greenColor)
-        blueColorSlider.value = Float(blueColor)
+        setSliders()
         
         viewColorRange.layer.cornerRadius = 15
         
